@@ -54,8 +54,8 @@ namespace Promotion_Engine.Core.BaseEngines
         {
             var applicableItems = order.OrderItems.Where(x => x.Discount is null);
 
-            var orderItem1 = applicableItems.FirstOrDefault(x => x.Product == promotionItem.MainProduct);
-            var orderItem2 = applicableItems.FirstOrDefault(x => x.Product == Product2);
+            var orderItem1 = applicableItems.FirstOrDefault(x => x.Product == promotionItem.MainProduct && x.Quantity==1);
+            var orderItem2 = applicableItems.FirstOrDefault(x => x.Product == Product2 && x.Quantity==1);
             if (orderItem1 is not null && orderItem2 is not null)
             {
                 var res = _finalPrice / 2;
