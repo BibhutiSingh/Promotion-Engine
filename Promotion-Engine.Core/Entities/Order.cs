@@ -9,7 +9,10 @@ namespace Promotion_Engine.Core.Entities
         public Order Order { get; set; }
         public Product Product { get; set; }
         public int Quantity { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
+        public decimal FinalPrice { get; set; }
+
+        public PromotionItem Discount { get; set; }
     }
     public class Order: EntityBase
     {
