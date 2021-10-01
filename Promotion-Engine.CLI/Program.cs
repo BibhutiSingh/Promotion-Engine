@@ -3,6 +3,7 @@ using Promotion_Engine.Core.Entities;
 using Promotion_Engine.Core.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Promotion_Engine.CLI
 {
@@ -35,6 +36,8 @@ namespace Promotion_Engine.CLI
                 }
                 
             }
+            Console.WriteLine($"===================================");
+            Console.WriteLine($" \t \t {cart.Order.TotatQuantity}\t {cart.Order.OrderItems.Sum(x=>x.Price)}\t {cart.Order.TotalPrice}");
 
 
         }
