@@ -5,6 +5,6 @@ namespace Promotion_Engine.Core.Interfaces
 {
     public interface IPromotion
     {
-        (decimal total, Order cart) ApplyPromotion(Order order);
+        Order ApplyPromotion(Order order);
     }
 }

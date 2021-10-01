@@ -20,7 +20,7 @@ namespace Promotion_Engine.Core.BaseEngines
             _finalPrice = fixedPrice;
 
         }
-        public (decimal total, Order cart) ApplyPromotion(Order order)
+        public Order ApplyPromotion(Order order)
         {
             throw new NotImplementedException();
         }

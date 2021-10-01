@@ -10,7 +10,8 @@ namespace Promotion_Engine.Core.Interfaces
    public interface ICheckout
     {
         public Order Order { get; set; }
-        void AddItem(Product product, int quantity);
-        decimal PerformCheckout(List<PromotionItem> promotions);
+        void AddOrUpdateItem(Product product, int quantity);
+        void RemoveItem(Product product);
+        decimal PerformCheckout(List<IPromotion> promotions);
     }
 }

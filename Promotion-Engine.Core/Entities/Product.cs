@@ -6,6 +6,6 @@
     public class Product : EntityBase
     {
         public string Name { get; set; }
-        public double UnitPrice { get; set; }
+        public decimal UnitPrice { get; set; }
     }
 }
