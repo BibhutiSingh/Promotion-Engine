@@ -38,12 +38,12 @@ namespace Promotion_Engine.Core.BaseEngines
     }
 
 
-    public class BuynComboPromotion : IPromotion
+    public class ComboPromotion : IPromotion
     {
         private PromotionItem promotionItem;
         private Product Product2;
         private readonly decimal _finalPrice;
-        public BuynComboPromotion(Product sku1, Product sku2, decimal fixedPrice)
+        public ComboPromotion(Product sku1, Product sku2, decimal fixedPrice)
         {
             promotionItem = new PromotionItem() { Name = $"Buy {sku1.Name} with {sku2.Name} at {fixedPrice}", MainProduct = sku1, };
             Product2 = sku2;
@@ -52,7 +52,21 @@ namespace Promotion_Engine.Core.BaseEngines
         }
         public Order ApplyPromotion(Order order)
         {
-            
+            var applicableItems = order.OrderItems.Where(x => x.Discount is null);
+
+            var orderItem1 = applicableItems.FirstOrDefault(x => x.Product == promotionItem.MainProduct);
+            var orderItem2 = applicableItems.FirstOrDefault(x => x.Product == Product2);
+            if (orderItem1 is not null && orderItem2 is not null)
+            {
+                var res = _finalPrice / 2;
+
+                orderItem1.FinalPrice = res;
+                orderItem1.Discount = promotionItem;
+
+                orderItem2.FinalPrice = res;
+                orderItem2.Discount = promotionItem;
+            }
+            return order;
         }
     }
 }
