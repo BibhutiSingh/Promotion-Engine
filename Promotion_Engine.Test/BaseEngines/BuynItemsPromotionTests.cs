@@ -27,7 +27,8 @@ namespace Promotion__Engine.Tests
 
             cart.PerformCheckout(lst);
 
-            Assert.AreEqual(cart.Order.OrderItems[0].FinalPrice, 100);
+            Assert.AreEqual(cart.Order.OrderItems[0].FinalPrice, 200);
+            Assert.AreEqual(cart.Order.OrderItems[1].FinalPrice, 60);
         }
     }
 }

@@ -29,14 +29,15 @@ namespace Promotion_Engine.Core.BaseEngines
                 {
                     Product = product,
                     Quantity = quantity,
-                    Price = product.UnitPrice * quantity
+                    Price = product.UnitPrice * quantity,
+                    FinalPrice = product.UnitPrice * quantity
                 };
                 Order.OrderItems.Add(orderItem);
             }
             else
             {
                 orderItem.Quantity = quantity;
-                orderItem.Price = product.UnitPrice * quantity;
+                orderItem.FinalPrice=orderItem.Price = product.UnitPrice * quantity;
             }
         }
 
@@ -49,7 +50,6 @@ namespace Promotion_Engine.Core.BaseEngines
                     Order = item.ApplyPromotion(Order);
                 }
             }
-            
             Order.TotatQuantity = Order.OrderItems.Sum(x=>x.Quantity);
             return Order.TotalPrice = Order.OrderItems.Sum(x => x.FinalPrice);
         }
